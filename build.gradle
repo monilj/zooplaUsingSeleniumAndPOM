@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'com.zoplaAssignment'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    testCompile group: 'org.testng', name: 'testng', version: '7.0.0'
+    compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.7.1'
+
+}
