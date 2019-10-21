@@ -1,0 +1,62 @@
+package page;
+
+import base.Base;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+import util.SelectFromDropDown;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SearchPage extends Base {
+
+
+    @FindBy(css = "div>div>h1")
+    private WebElement headerOfThePage;
+
+    @FindAll({@FindBy(css = ".listing-results-right.clearfix>a.listing-results-price")})
+    private List<WebElement> propertyRate;
+
+    @FindBy(name = "results_sort")
+    private WebElement dropDownTitle;
+
+    public SearchPage() {
+        PageFactory.initElements(driver, this);
+    }
+
+
+    public ArrayList<Integer> getFilteredPrices() throws InterruptedException {
+//        SelectFromDropDown.selectSingleOptionFromDropDown(dropDownTitle,"lowest_price");
+        WebElement ele= driver.findElement(By.name("results_sort"));
+        Select results = new Select(ele);
+        results.selectByVisibleText("lowest_price");
+        Thread.sleep(2000);
+        ArrayList<Integer> pricesAfterSorting=getPrices();
+        return pricesAfterSorting;
+    }
+
+    public ArrayList<Integer> getPrices() {
+        ArrayList<Integer> flatPrices = new ArrayList<Integer>();
+        for (WebElement ele : propertyRate) {
+            String price = ele.getText();
+            price = price.replaceAll("[^\\d.]", "");
+            int priceAfterRemovingNonDigitsChar = Integer.parseInt(price);
+            flatPrices.add(priceAfterRemovingNonDigitsChar);
+        }
+        return flatPrices;
+    }
+
+    public String getPageHeader() {
+        return headerOfThePage.getText();
+    }
+
+    public PropertyPage getCheapestProperty(int nthCheapestProperty) {
+        propertyRate.get(nthCheapestProperty).click();
+        return new PropertyPage();
+
+    }
+}

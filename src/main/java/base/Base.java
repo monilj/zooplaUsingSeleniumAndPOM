@@ -21,7 +21,7 @@ public class Base {
     public Base() {
         try {
             properties = new Properties();
-            FileInputStream propertyReader = new FileInputStream("$project.buildDir/src/main/java/config/config.properties");
+            FileInputStream propertyReader = new FileInputStream("./src/main/java/config/config.properties");
             properties.load(propertyReader);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

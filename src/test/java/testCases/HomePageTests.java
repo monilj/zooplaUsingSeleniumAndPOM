@@ -1,13 +1,18 @@
 package testCases;
 
 import base.Base;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import page.HomePage;
+import page.SearchPage;
 
 public class HomePageTests extends Base {
     HomePage homePage;
-    public HomePageTests(){
+    SearchPage searchPage;
+
+    public HomePageTests() {
         super();
     }
 
@@ -17,9 +22,19 @@ public class HomePageTests extends Base {
         homePage = new HomePage();
     }
 
+    @Test
+    public void homePageTitleTest() {
+        String homePageTitle = homePage.homePageTitle();
+        Assert.assertTrue(homePageTitle.contains("Zoopla > "));
+    }
 
+    @Test
+    public void searchTest() throws InterruptedException {
+        searchPage= homePage.search("London");
+    }
 
     @AfterMethod
+
     public void tearDown() {
         driver.quit();
     }
