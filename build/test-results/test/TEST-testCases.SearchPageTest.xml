@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="testCases.SearchPageTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-10-21T12:40:31" hostname="BNG-184008-C02XH07JJGH8" time="0.638">
+<testsuite name="testCases.SearchPageTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-10-22T03:33:33" hostname="in-monilj-2.local" time="5.75">
   <properties/>
-  <testcase name="testFilter" classname="testCases.SearchPageTest" time="0.638">
-    <failure message="org.openqa.selenium.support.ui.UnexpectedTagNameException: Element should have been &quot;select&quot; but was &quot;input&quot;&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'BNG-184008-C02XH07JJGH8', ip: 'fe80:0:0:0:84d:2590:2699:4fce%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.6', java.version: '1.8.0_181'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.support.ui.UnexpectedTagNameException">org.openqa.selenium.support.ui.UnexpectedTagNameException: Element should have been &quot;select&quot; but was &quot;input&quot;
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'BNG-184008-C02XH07JJGH8', ip: 'fe80:0:0:0:84d:2590:2699:4fce%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.6', java.version: '1.8.0_181'
-Driver info: driver.version: unknown
-	at org.openqa.selenium.support.ui.Select.&lt;init&gt;(Select.java:48)
-	at page.SearchPage.getFilteredPrices(SearchPage.java:35)
+  <testcase name="testFilter" classname="testCases.SearchPageTest" time="5.75">
+    <failure message="java.lang.NumberFormatException: For input string: &quot;&quot;" type="java.lang.NumberFormatException">java.lang.NumberFormatException: For input string: &quot;&quot;
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:592)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at page.SearchPage.getPrices(SearchPage.java:49)
+	at page.SearchPage.getFilteredPrices(SearchPage.java:39)
 	at testCases.SearchPageTest.testFilter(SearchPageTest.java:42)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -21,7 +21,7 @@ Driver info: driver.version: unknown
 	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
 	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at java.util.ArrayList.forEach(ArrayList.java:1255)
 	at org.testng.TestRunner.privateRun(TestRunner.java:770)
 	at org.testng.TestRunner.run(TestRunner.java:591)
 	at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
@@ -64,14 +64,64 @@ Driver info: driver.version: unknown
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <system-out><![CDATA[]]></system-out>
+  <system-out><![CDATA[375000
+260000
+475000
+400000
+1775000
+340000
+600000
+585000
+799995
+425000
+670000
+700000
+550000
+350000
+800000
+550000
+525000
+290000
+1295000
+925000
+675000
+365000
+500000
+450000
+450000
+select7000
+13000
+15000
+18000
+19375
+19375
+19375
+19375
+19500
+20000
+20000
+20000
+22000
+22000
+23000
+24000
+24400
+24995
+25000
+25000
+25000
+25000
+25000
+25000
+
+]]></system-out>
   <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-Starting ChromeDriver 77.0.3865.40 (f484704e052e0b556f8030b65b953dce96503217-refs/branch-heads/3865@{#442}) on port 16911
+Starting ChromeDriver 77.0.3865.40 (f484704e052e0b556f8030b65b953dce96503217-refs/branch-heads/3865@{#442}) on port 8931
 Only local connections are allowed.
 Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
-Oct 21, 2019 6:10:09 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+Oct 22, 2019 9:03:27 AM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>

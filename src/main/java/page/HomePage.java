@@ -1,6 +1,8 @@
 package page;
 
 import base.Base;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -24,7 +26,8 @@ public class HomePage extends Base {
 
     public SearchPage search(String location) throws InterruptedException {
         locationTextBox.sendKeys(location);
-        searchButton.click();
+        locationTextBox.sendKeys(Keys.ENTER);
+//        searchButton.click();
         Thread.sleep(1000);
         return new SearchPage();
     }

@@ -21,8 +21,10 @@ public class SearchPage extends Base {
     @FindAll({@FindBy(css = ".listing-results-right.clearfix>a.listing-results-price")})
     private List<WebElement> propertyRate;
 
-    @FindBy(name = "results_sort")
-    private WebElement dropDownTitle;
+//    @FindBy(name = "results_sort")
+//    private WebElement dropDownTitle;
+    @FindAll({@FindBy(css = "select.js-redirects-to-option.js-check.js-touched")})
+    private List<WebElement> dropDownLists;
 
     public SearchPage() {
         PageFactory.initElements(driver, this);
@@ -30,10 +32,9 @@ public class SearchPage extends Base {
 
 
     public ArrayList<Integer> getFilteredPrices() throws InterruptedException {
-//        SelectFromDropDown.selectSingleOptionFromDropDown(dropDownTitle,"lowest_price");
-        WebElement ele= driver.findElement(By.name("results_sort"));
-        Select results = new Select(ele);
-        results.selectByVisibleText("lowest_price");
+        WebElement dropDownForFilter= dropDownLists.get(1);
+        System.out.printf(dropDownForFilter.getTagName());
+        SelectFromDropDown.selectSingleOptionFromDropDown(dropDownForFilter,"Lowest price");
         Thread.sleep(2000);
         ArrayList<Integer> pricesAfterSorting=getPrices();
         return pricesAfterSorting;
@@ -44,6 +45,7 @@ public class SearchPage extends Base {
         for (WebElement ele : propertyRate) {
             String price = ele.getText();
             price = price.replaceAll("[^\\d.]", "");
+            System.out.println(price);
             int priceAfterRemovingNonDigitsChar = Integer.parseInt(price);
             flatPrices.add(priceAfterRemovingNonDigitsChar);
         }
